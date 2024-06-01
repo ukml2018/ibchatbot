@@ -11,8 +11,6 @@ def home():
 @app.route("/get")
 def chat():
     userText = request.args.get('msg')  
-    #return str(bot.get_response(userText)) 
-    #return response
     #message = request.form['message']
     print("Before calling the ")
     # Construct the URL with the user's query
