@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, jsonify
 import requests
 import json
+import os
 
 app = Flask(__name__)
 
@@ -15,8 +16,18 @@ def chat():
     #return response
     #message = request.form['message']
     print("Before calling the ")
+    
+    #client = requests.Session()
+    #get the current process id
+    session_id = os.getpid()
+
+    #print the sesion id of current process
+    #session_id = os.getsid(pid)
+    print (session_id)
+    #print(client)
+    flag="C"
     # Construct the URL with the user's query
-    url = f"https://datalookupflow.azurewebsites.net/{userText}"
+    url = f"https://datalookupflow.azurewebsites.net/{session_id}/{flag}/{userText}"
     
     # Make an HTTPS call to the constructed URL
     #response = requests.get(url)
@@ -29,6 +40,8 @@ def chat():
         print(response)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         #return json.dump(response)
+        #If response Json data
+        #If  image .jpg
         return response.text
     except requests.exceptions.RequestException as e:
         # Handle the exception here
