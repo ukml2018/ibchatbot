@@ -12,3 +12,5 @@ langchain_community
 langchain
 langchain_core
 langchain_openai
+pandas
+flask_jsonpify
